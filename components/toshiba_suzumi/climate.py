@@ -21,7 +21,6 @@ CONF_OUTDOOR_TEMP = "outdoor_temp"
 CONF_PWR_SELECT = "power_select"
 CONF_SPECIAL_MODE = "special_mode"
 CONF_SPECIAL_MODE_MODES = "modes"
-CONF_FIXED_SWING = "fixed_swing"
 
 FEATURE_HORIZONTAL_SWING = "horizontal_swing"
 MIN_TEMP = "min_temp"
@@ -30,8 +29,6 @@ DISABLE_WIFI_LED = "disable_wifi_led"
 toshiba_ns = cg.esphome_ns.namespace("toshiba_suzumi")
 ToshibaClimateUart = toshiba_ns.class_("ToshibaClimateUart", cg.PollingComponent, climate.Climate, uart.UARTDevice)
 ToshibaPwrModeSelect = toshiba_ns.class_('ToshibaPwrModeSelect', select.Select)
-ToshibaFxdSwingSelect = toshiba_ns.class_('ToshibaFxdSwingSelect', select.Select)
-
 ToshibaSpecialModeSelect = toshiba_ns.class_('ToshibaSpecialModeSelect', select.Select)
 
 if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
@@ -47,9 +44,6 @@ if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
                 ),
             cv.Optional(CONF_PWR_SELECT): select.select_schema(ToshibaPwrModeSelect).extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
-            }),
-            cv.Optional(CONF_FIXED_SWING): select.select_schema(ToshibaFxdSwingSelect).extend({
-                cv.GenerateID(): cv.declare_id(ToshibaFxdSwingSelect),
             }),
             cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
@@ -74,9 +68,6 @@ else:
             cv.Optional(CONF_PWR_SELECT): select.SELECT_SCHEMA.extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
-            cv.Optional(CONF_FIXED_SWING): select.select_schema(ToshibaFxdSwingSelect).extend({
-                cv.GenerateID(): cv.declare_id(ToshibaFxdSwingSelect),
-            }),
             cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.SELECT_SCHEMA.extend({
@@ -100,11 +91,6 @@ async def to_code(config):
 
     if CONF_PWR_SELECT in config:
         sel = await select.new_select(config[CONF_PWR_SELECT], options=['50 %', '75 %', '100 %'])
-        await cg.register_parented(sel, config[CONF_ID])
-        cg.add(var.set_pwr_select(sel))
-
-    if CONF_FIXED_SWING in config:
-        sel = await select.new_select(config[CONF_FIXED_SWING], options=['Fixed 1', 'Fixed 2', 'Fixed 3', 'Fixed 4', 'Fixed 5'])
         await cg.register_parented(sel, config[CONF_ID])
         cg.add(var.set_pwr_select(sel))
 

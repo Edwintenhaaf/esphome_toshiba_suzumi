@@ -7,7 +7,7 @@
 namespace esphome {
 namespace toshiba_suzumi {
 
-constexpr const char* CUSTOM_FAN_LEVEL_2 = "Medium-Low";
+constexpr const char* CUSTOM_FAN_LEVEL_2 = "Low-Medium";
 constexpr const char* CUSTOM_FAN_LEVEL_4 = "Medium-High";
 
 constexpr const char* CUSTOM_PWR_LEVEL_50 = "50 %";
@@ -40,7 +40,6 @@ enum class FAN {
   FAN_AUTO = 65
 };
 enum class SWING { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66 };
-enum class FXDSWING { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
 enum class STATE { ON = 48, OFF = 49 };
 enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
 
@@ -61,18 +60,17 @@ enum SPECIAL_MODE {
 enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
   DELAY = 1, // dummy command to issue a delay in communication
-  POWER_STATE = 128, // { ON = 48, OFF = 49 }
-  POWER_SEL = 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
+  POWER_STATE = 128,
+  POWER_SEL = 135,
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
-  FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
-  SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
-  FXDSWING = 163 // { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 }
-  MODE = 176, // { HEAT_COOL = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 }
-  TARGET_TEMP = 179, // { 5-13 = 8° mode, 17-30 = standard mode }
-  ROOM_TEMP = 187, // { 0-50 = room temperature in Celsius }
-  OUTDOOR_TEMP = 190, // { 0-50 = outdoor temperature in Celsius, negative values are represented as 256 - value }
-  WIFI_LED = 223, // { ON = 49, OFF = 50 }
-  SPECIAL_MODE = 247, // { STANDARD = 0, HI_POWER = 1, ECO = 3, FIREPLACE_1 = 32, FIREPLACE_2 = 48, EIGHT_DEG = 4, SILENT_1 = 2, SILENT_2 = 10, SLEEP = 5, FLOOR = 6, COMFORT = 7 }
+  FAN = 160,
+  SWING = 163,
+  MODE = 176,
+  TARGET_TEMP = 179,
+  ROOM_TEMP = 187,
+  OUTDOOR_TEMP = 190,
+  WIFI_LED = 223,
+  SPECIAL_MODE = 247,
 };
 
 const MODE ClimateModeToInt(climate::ClimateMode mode);
@@ -88,9 +86,6 @@ const ::std::string IntToCustomFanMode(FAN mode);
 
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode);
 const std::string IntToPowerLevel(PWR_LEVEL mode);
-
-const optional<FXDSWING> StringToFxdLevel(const std::string &mode);
-const std::string IntToFxdLevel(FXDSWING mode);
 
 const optional<SPECIAL_MODE> SpecialModeToInt(const std::string &mode);
 const std::string IntToSpecialMode(SPECIAL_MODE mode);
