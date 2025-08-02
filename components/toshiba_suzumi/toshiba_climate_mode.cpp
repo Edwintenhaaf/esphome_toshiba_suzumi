@@ -88,6 +88,31 @@ const std::string IntToPowerLevel(PWR_LEVEL mode) {
   }
 }
 
+const optional<FXD_LEVEL> StringToFxdLevel(const std::string &mode) {
+  if (str_equals_case_insensitive(mode, CUSTOM_FXD_LEVEL_100)) {
+    return FXD_LEVEL::PCT_100;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_FXD_LEVEL_75)) {
+    return PWR_LEVEL::PCT_75;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_FXD_LEVEL_50)) {
+    return PWR_LEVEL::PCT_50;
+  } else {
+    return nullopt;
+  }
+}
+
+const std::string IntToFxdLevel(FXD_LEVEL mode) {
+  switch (mode) {
+    case FXD_LEVEL::PCT_100:
+      return CUSTOM_PWR_LEVEL_100;
+    case FXD_LEVEL::PCT_75:
+      return CUSTOM_PWR_LEVEL_75;
+    case FXD_LEVEL::PCT_50:
+      return CUSTOM_PWR_LEVEL_50;
+    default:
+      return "Unknown";
+  }
+}
+
 const optional<SPECIAL_MODE> SpecialModeToInt(const std::string &mode) {
   if (str_equals_case_insensitive(mode, SPECIAL_MODE_STANDARD)) {
     return SPECIAL_MODE::STANDARD;
