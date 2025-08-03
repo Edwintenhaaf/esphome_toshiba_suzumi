@@ -88,8 +88,8 @@ const LogString *climate_state_to_string(STATE mode);
 const optional<FAN> StringToFanLevel(std::string mode);
 const ::std::string IntToCustomFanMode(FAN mode);
 
-const optional<SWING> StringToSwingLevel(const std::string &mode);
-const std::string IntToSwingLevel(SWING mode);
+const optional<SWING_SET> StringToSwingLevel(const std::string &mode);
+const std::string IntToSwingLevel(SWING_SET mode);
 
 const optional<SPECIAL_MODE> SpecialModeToInt(const std::string &mode);
 const std::string IntToSpecialMode(SPECIAL_MODE mode);
