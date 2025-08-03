@@ -45,8 +45,7 @@ enum class FAN {
   FAN_HIGH = 54,
   FAN_AUTO = 65
 };
-enum class SWING { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66 };
-enum class FXDSWING { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
+// enum class SWING { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66 };
 enum class STATE { ON = 48, OFF = 49 };
 // enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
 enum class PWR_LEVEL { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66, FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
@@ -69,11 +68,10 @@ enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
   DELAY = 1, // dummy command to issue a delay in communication
   POWER_STATE = 128, // { ON = 48, OFF = 49 }
-  POWER_SEL = 163, // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
+  POWER_SEL = 163, // used for additonal swing modes // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
   FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
-  SWING = 162, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
-  FXDSWING = 163, // { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 }
+  // SWING = 162, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
   MODE = 176, // { HEAT_COOL = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 }
   TARGET_TEMP = 179, // { 5-13 = 8° mode, 17-30 = standard mode }
   ROOM_TEMP = 187, // { 0-50 = room temperature in Celsius }
@@ -85,8 +83,8 @@ enum class ToshibaCommandType : uint8_t {
 const MODE ClimateModeToInt(climate::ClimateMode mode);
 const climate::ClimateMode IntToClimateMode(MODE mode);
 
-const SWING ClimateSwingModeToInt(climate::ClimateSwingMode mode);
-const climate::ClimateSwingMode IntToClimateSwingMode(SWING mode);
+// const SWING ClimateSwingModeToInt(climate::ClimateSwingMode mode);
+// const climate::ClimateSwingMode IntToClimateSwingMode(SWING mode);
 
 const LogString *climate_state_to_string(STATE mode);
 

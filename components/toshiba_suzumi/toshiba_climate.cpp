@@ -255,12 +255,12 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       }
       break;
     }
-    case ToshibaCommandType::SWING: {
-      auto swingMode = IntToClimateSwingMode(static_cast<SWING>(value));
-      ESP_LOGI(TAG, "Received swing mode: %s", climate_swing_mode_to_string(swingMode));
-      this->swing_mode = swingMode;
-      break;
-    }
+    // case ToshibaCommandType::SWING: {
+    //  auto swingMode = IntToClimateSwingMode(static_cast<SWING>(value));
+    //  ESP_LOGI(TAG, "Received swing mode: %s", climate_swing_mode_to_string(swingMode));
+    //  this->swing_mode = swingMode;
+    //  break;
+    //}
     case ToshibaCommandType::MODE: {
       auto mode = IntToClimateMode(static_cast<MODE>(value));
       ESP_LOGI(TAG, "Received AC mode: %s", climate_mode_to_string(mode));
@@ -432,13 +432,13 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
     }
   }
 
-  if (call.get_swing_mode().has_value()) {
-    auto swing_mode = *call.get_swing_mode();
-    auto function_value = ClimateSwingModeToInt(swing_mode);
-    ESP_LOGD(TAG, "Setting swing mode to %s", climate_swing_mode_to_string(swing_mode));
-    this->swing_mode = swing_mode;
-    this->sendCmd(ToshibaCommandType::SWING, static_cast<uint8_t>(function_value));
-  }
+//  if (call.get_swing_mode().has_value()) {
+//    auto swing_mode = *call.get_swing_mode();
+//    auto function_value = ClimateSwingModeToInt(swing_mode);
+//    ESP_LOGD(TAG, "Setting swing mode to %s", climate_swing_mode_to_string(swing_mode));
+//    this->swing_mode = swing_mode;
+//    this->sendCmd(ToshibaCommandType::SWING, static_cast<uint8_t>(function_value));
+//  }
 
   this->publish_state();
 }
