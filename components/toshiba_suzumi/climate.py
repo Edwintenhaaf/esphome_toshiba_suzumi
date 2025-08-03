@@ -47,9 +47,7 @@ if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
             cv.Optional(CONF_PWR_SELECT): select.select_schema(ToshibaPwrModeSelect).extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
-            cv.Optional(CONF_FIXED_SWING): select.select_schema(ToshibaFxdSwingSelect).extend({
-                cv.GenerateID(): cv.declare_id(ToshibaFxdSwingSelect),
-            }),
+            cv.Optional(FEATURE_FIXED_SWING): cv.boolean,
             cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.select_schema(ToshibaSpecialModeSelect).extend({
@@ -101,7 +99,8 @@ async def to_code(config):
         cg.add(var.set_pwr_select(sel))
 
     if FEATURE_FIXED_SWING in config:
-        cq
+        cg.add(var.set_fixed_swing(True))
+
     if FEATURE_HORIZONTAL_SWING in config:
         cg.add(var.set_horizontal_swing(True))
 
