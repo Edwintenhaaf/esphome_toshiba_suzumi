@@ -7,7 +7,7 @@
 namespace esphome {
 namespace toshiba_suzumi {
 
-constexpr const char* CUSTOM_FAN_LEVEL_2 = "Low-Medium";
+constexpr const char* CUSTOM_FAN_LEVEL_2 = "Medium-Low";
 constexpr const char* CUSTOM_FAN_LEVEL_4 = "Medium-High";
 
 constexpr const char* CUSTOM_PWR_LEVEL_50 = "50 %";
