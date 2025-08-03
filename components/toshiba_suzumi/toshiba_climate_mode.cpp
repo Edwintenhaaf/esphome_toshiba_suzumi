@@ -64,12 +64,16 @@ const std::string IntToCustomFanMode(FAN mode) {
 }
 
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode) {
-  if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_100)) {
-    return PWR_LEVEL::PCT_100;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_75)) {
-    return PWR_LEVEL::PCT_75;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_50)) {
-    return PWR_LEVEL::PCT_50;
+  if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_1)) {
+    return PWR_LEVEL::FIX_POS_1;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_2)) {
+    return PWR_LEVEL::FIX_POS_2;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_3)) {
+    return PWR_LEVEL::FIX_POS_3;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_4)) {
+    return PWR_LEVEL::FIX_POS_4;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_5)) {
+    return PWR_LEVEL::FIX_POS_5;
   } else {
     return nullopt;
   }
@@ -77,12 +81,16 @@ const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode) {
 
 const std::string IntToPowerLevel(PWR_LEVEL mode) {
   switch (mode) {
-    case PWR_LEVEL::PCT_100:
-      return CUSTOM_PWR_LEVEL_100;
-    case PWR_LEVEL::PCT_75:
-      return CUSTOM_PWR_LEVEL_75;
-    case PWR_LEVEL::PCT_50:
-      return CUSTOM_PWR_LEVEL_50;
+    case PWR_LEVEL::FIX_POS_1:
+      return CUSTOM_PWR_LEVEL_1;
+    case PWR_LEVEL::FIX_POS_2:
+      return CUSTOM_PWR_LEVEL_2;
+    case PWR_LEVEL::FIX_POS_3:
+      return CUSTOM_PWR_LEVEL_3;
+    case PWR_LEVEL::FIX_POS_4:
+      return CUSTOM_PWR_LEVEL_4;
+    case PWR_LEVEL::FIX_POS_5:
+      return CUSTOM_PWR_LEVEL_5;
     default:
       return "Unknown";
   }

@@ -10,9 +10,11 @@ namespace toshiba_suzumi {
 constexpr const char* CUSTOM_FAN_LEVEL_2 = "Medium Low";
 constexpr const char* CUSTOM_FAN_LEVEL_4 = "Medium High";
 
-constexpr const char* CUSTOM_PWR_LEVEL_50 = "50 %";
-constexpr const char* CUSTOM_PWR_LEVEL_75 = "75 %";
-constexpr const char* CUSTOM_PWR_LEVEL_100 = "100 %";
+constexpr const char* CUSTOM_PWR_LEVEL_1 = "Pos 1";
+constexpr const char* CUSTOM_PWR_LEVEL_2 = "Pos 2";
+constexpr const char* CUSTOM_PWR_LEVEL_3 = "Pos 3";
+constexpr const char* CUSTOM_PWR_LEVEL_4 = "Pos 4";
+constexpr const char* CUSTOM_PWR_LEVEL_5 = "Pos 5";
 
 constexpr const char* SPECIAL_MODE_STANDARD = "Standard";
 constexpr const char* SPECIAL_MODE_HI_POWER = "Hi POWER";
@@ -42,7 +44,8 @@ enum class FAN {
 enum class SWING { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66 };
 enum class FXDSWING { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
 enum class STATE { ON = 48, OFF = 49 };
-enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
+// enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
+enum class PWR_LEVEL { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
 
 enum SPECIAL_MODE {
   STANDARD = 0,
@@ -62,7 +65,7 @@ enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
   DELAY = 1, // dummy command to issue a delay in communication
   POWER_STATE = 128, // { ON = 48, OFF = 49 }
-  POWER_SEL = 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
+  POWER_SEL = 163 // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
   FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
   SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
