@@ -281,7 +281,6 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       break;
     case ToshibaCommandType::POWER_SEL: {
       auto pwr_level = IntToPowerLevel(static_cast<PWR_LEVEL>(value));
-      //ESP_LOGI(TAG, "Received Swing mode: %d", value);
       ESP_LOGI(TAG, "Received Swing mode: %s", pwr_level.c_str());
       if (pwr_select_ != nullptr) {
         pwr_select_->publish_state(pwr_level);
@@ -473,7 +472,7 @@ ClimateTraits ToshibaClimateUart::traits() {
 }
 
 void ToshibaClimateUart::on_set_pwr_level(const std::string &value) {
-  ESP_LOGD(TAG, "Setting Swing to %s", value.c_str());
+  ESP_LOGD(TAG, "Setting Swing to %s", pwr_level.c_str());
   auto pwr_level = StringToPwrLevel(value);
   this->sendCmd(ToshibaCommandType::POWER_SEL, static_cast<uint8_t>(pwr_level.value()));
   pwr_select_->publish_state(value);
