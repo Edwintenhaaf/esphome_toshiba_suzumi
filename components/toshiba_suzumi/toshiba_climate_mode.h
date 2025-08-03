@@ -68,7 +68,7 @@ enum class ToshibaCommandType : uint8_t {
   POWER_SEL = 163, // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
   FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
-  SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
+  SWING = 162, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
   FXDSWING = 163, // { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 }
   MODE = 176, // { HEAT_COOL = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 }
   TARGET_TEMP = 179, // { 5-13 = 8° mode, 17-30 = standard mode }
