@@ -86,7 +86,6 @@ class ToshibaClimateUart : public PollingComponent, public climate::Climate, pub
   void handle_rx_byte_(uint8_t c);
   bool validate_message_();
   void on_set_pwr_level(const std::string &value);
-  void on_set_fixed_swing(const std::string &value);
   void on_set_special_mode(const std::string &value);
 
   friend class ToshibaPwrModeSelect;
