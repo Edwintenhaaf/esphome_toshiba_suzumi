@@ -10,15 +10,15 @@ namespace toshiba_suzumi {
 constexpr const char* CUSTOM_FAN_LEVEL_2 = "Medium Low";
 constexpr const char* CUSTOM_FAN_LEVEL_4 = "Medium High";
 
-constexpr const char* CUSTOM_SWING_SET_OFF = "Off";
-constexpr const char* CUSTOM_SWING_SET_BOTH = "Both";
-constexpr const char* CUSTOM_SWING_SET_VERTICAL = "Vertical";
-constexpr const char* CUSTOM_SWING_SET_HORIZONTAL = "Horizontal"; 
-constexpr const char* CUSTOM_SWING_SET_1 = "Pos 1";
-constexpr const char* CUSTOM_SWING_SET_2 = "Pos 2";
-constexpr const char* CUSTOM_SWING_SET_3 = "Pos 3";
-constexpr const char* CUSTOM_SWING_SET_4 = "Pos 4";
-constexpr const char* CUSTOM_SWING_SET_5 = "Pos 5";
+constexpr const char* CUSTOM_PWR_LEVEL_OFF = "Off";
+constexpr const char* CUSTOM_PWR_LEVEL_BOTH = "Both";
+constexpr const char* CUSTOM_PWR_LEVEL_VERTICAL = "Vertical";
+constexpr const char* CUSTOM_PWR_LEVEL_HORIZONTAL = "Horizontal"; 
+constexpr const char* CUSTOM_PWR_LEVEL_1 = "Pos 1";
+constexpr const char* CUSTOM_PWR_LEVEL_2 = "Pos 2";
+constexpr const char* CUSTOM_PWR_LEVEL_3 = "Pos 3";
+constexpr const char* CUSTOM_PWR_LEVEL_4 = "Pos 4";
+constexpr const char* CUSTOM_PWR_LEVEL_5 = "Pos 5";
 
 constexpr const char* SPECIAL_MODE_STANDARD = "Standard";
 constexpr const char* SPECIAL_MODE_HI_POWER = "Hi POWER";
@@ -68,10 +68,10 @@ enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
   DELAY = 1, // dummy command to issue a delay in communication
   POWER_STATE = 128, // { ON = 48, OFF = 49 }
-  // POWER_SEL = 163, // used for additonal swing modes // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
+  POWER_SEL = 163, // used for additonal swing modes // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
   FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
-  SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
+  // SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
   MODE = 176, // { HEAT_COOL = 65, COOL = 66, HEAT = 67, DRY = 68, FAN_ONLY = 69 }
   TARGET_TEMP = 179, // { 5-13 = 8° mode, 17-30 = standard mode }
   ROOM_TEMP = 187, // { 0-50 = room temperature in Celsius }
@@ -88,8 +88,8 @@ const LogString *climate_state_to_string(STATE mode);
 const optional<FAN> StringToFanLevel(std::string mode);
 const ::std::string IntToCustomFanMode(FAN mode);
 
-const optional<SWING_SET> StringToSwingLevel(const std::string &mode);
-const std::string IntToSwingLevel(SWING_SET mode);
+const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode);
+const std::string IntToPowerLevel(PWR_LEVEL mode);
 
 const optional<SPECIAL_MODE> SpecialModeToInt(const std::string &mode);
 const std::string IntToSpecialMode(SPECIAL_MODE mode);

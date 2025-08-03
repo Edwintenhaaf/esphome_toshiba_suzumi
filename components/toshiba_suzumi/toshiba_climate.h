@@ -47,7 +47,7 @@ class ToshibaClimateUart : public PollingComponent, public climate::Climate, pub
   float get_setup_priority() const override { return setup_priority::LATE; }
 
   void set_outdoor_temp_sensor(sensor::Sensor *outdoor_temp_sensor) { outdoor_temp_sensor_ = outdoor_temp_sensor; }
-  void set_swing_set(select::Select *swing_set) { swing_set_ = swing_set; }
+  void set_pwr_select(select::Select *pws_select) { pwr_select_ = pws_select; }
   void set_target_temperature(float target_temp) { this->target_temperature = target_temp; }
   void disable_wifi_led(bool disabled) { wifi_led_disabled_ = disabled; }
   void set_special_mode_select(select::Select *special_mode_select) { special_mode_select_ = special_mode_select; }
@@ -67,7 +67,7 @@ class ToshibaClimateUart : public PollingComponent, public climate::Climate, pub
   uint32_t last_rx_char_timestamp_ = 0;
   STATE power_state_ = STATE::OFF;
   optional<SPECIAL_MODE> special_mode_ = SPECIAL_MODE::STANDARD;
-  select::Select *swing_set_ = nullptr;
+  select::Select *pwr_select_ = nullptr;
   sensor::Sensor *outdoor_temp_sensor_ = nullptr;
   uint8_t min_temp_ = 17; // default min temp for units without 8° heating mode
   bool wifi_led_disabled_ = false;
