@@ -4,6 +4,11 @@ Should be compatible with models Toshiba Suzumi/Shorai/Seiya and other models us
 
 Toshiba air conditioner has an option for connecting remote module purchased separately. This project aims to replace this module with more affordable and universal ESP module and to allow integration to home automation systems like HomeAssistent.
 
+# Fork changes
+My fork adds support for additional fixed swing mode positions (1-5)
+Power Select option adapted for use of swing modes
+Device Kazumi+ RAS-G3KVSG 
+
 This component use ESPHome UART to connect with Toshiba AC and communicates directly with Home Assistant.
 
 <a href="https://www.buymeacoffee.com/pedobryk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
