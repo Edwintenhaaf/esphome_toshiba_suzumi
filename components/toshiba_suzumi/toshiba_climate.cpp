@@ -280,8 +280,8 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       }
       break;
     case ToshibaCommandType::POWER_SEL: {
-      auto pwr_level = IntToPowerLevel(static_cast<PWR_LEVEL>(value));
-      ESP_LOGI(TAG, "Received power select: %d", value);
+      auto pwr_level = StringToPowerLevel(static_cast<PWR_LEVEL>(value));
+      ESP_LOGI(TAG, "Received swing select: %d", value);
       if (pwr_select_ != nullptr) {
         pwr_select_->publish_state(pwr_level);
       }
