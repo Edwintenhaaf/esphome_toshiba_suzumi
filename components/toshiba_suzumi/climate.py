@@ -69,7 +69,7 @@ else:
             cv.Optional(CONF_PWR_SELECT): select.SELECT_SCHEMA.extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
-            cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
+            # cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.SELECT_SCHEMA.extend({
                 cv.GenerateID(): cv.declare_id(ToshibaSpecialModeSelect),
@@ -95,8 +95,8 @@ async def to_code(config):
         await cg.register_parented(sel, config[CONF_ID])
         cg.add(var.set_pwr_select(sel))
 
-    if FEATURE_HORIZONTAL_SWING in config:
-        cg.add(var.set_horizontal_swing(True))
+    # if FEATURE_HORIZONTAL_SWING in config:
+    #     cg.add(var.set_horizontal_swing(True))
 
     if MIN_TEMP in config:
         cg.add(var.set_min_temp(config[MIN_TEMP]))
