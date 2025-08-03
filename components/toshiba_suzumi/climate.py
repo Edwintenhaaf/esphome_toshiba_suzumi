@@ -47,7 +47,10 @@ if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
             cv.Optional(CONF_PWR_SELECT): select.select_schema(ToshibaPwrModeSelect).extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
-            cv.Optional(FEATURE_FIXED_SWING): cv.boolean,
+            cv.Optional(CONF_FIXED_SWING): select.select_schema(ToshibaFxdSwingSelect).extend({
+                cv.GenerateID(): cv.declare_id(ToshibaFxdSwingSelect),
+                cv.Required("options"): cv.ensure_list(cv.one_of("Pos 1", "Pos 2", "Pos 3", "Pos 4", "Pos 5"))
+            }),
             cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.select_schema(ToshibaSpecialModeSelect).extend({
