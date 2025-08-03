@@ -65,7 +65,7 @@ enum class ToshibaCommandType : uint8_t {
   HANDSHAKE = 0,  // dummy command to handle all handshake requests
   DELAY = 1, // dummy command to issue a delay in communication
   POWER_STATE = 128, // { ON = 48, OFF = 49 }
-  POWER_SEL = 163 // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
+  POWER_SEL = 163, // 135, // { 50 = 50%, 75 = 75%, 100 = 100% }
   COMFORT_SLEEP = 148, // { ON = 65, OFF = 66 }
   FAN = 160, // { QUIET = 49, LOW = 50, MEDIUM-LOW = 51, MEDIUM = 52, MEDIUM-HIGH = 53, HIGH = 54, AUTO = 65 }
   SWING = 163, // { OFF = 49, VERTICAL = 65, HORIZONTAL = 66, BOTH = 67 }
