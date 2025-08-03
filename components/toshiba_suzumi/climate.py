@@ -21,7 +21,7 @@ CONF_OUTDOOR_TEMP = "outdoor_temp"
 CONF_PWR_SELECT = "power_select"
 CONF_SPECIAL_MODE = "special_mode"
 CONF_SPECIAL_MODE_MODES = "modes"
-FEATURE_FIXED_SWING = "fixed_swing"
+CONF_FIXED_SWING = "fixed_swing"
 FEATURE_HORIZONTAL_SWING = "horizontal_swing"
 MIN_TEMP = "min_temp"
 DISABLE_WIFI_LED = "disable_wifi_led"
@@ -72,7 +72,7 @@ else:
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
             cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
-            cv.Optional(FEATURE_FIXED_SWING): cv.boolean,
+            cv.Optional(CONF_FIXED_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.SELECT_SCHEMA.extend({
                 cv.GenerateID(): cv.declare_id(ToshibaSpecialModeSelect),
@@ -98,8 +98,10 @@ async def to_code(config):
         await cg.register_parented(sel, config[CONF_ID])
         cg.add(var.set_pwr_select(sel))
 
-    if FEATURE_FIXED_SWING in config:
-        cg.add(var.set_fixed_swing(True))
+    if CONF_FIXED_SWING in config:
+        sel = await select.new_select(config[CONF_FIXED_SWING], options=['Pos 1', 'Pos 2', 'Pos 3', 'Pos 4', 'Pos 5'])
+        await cg.register_parented(sel, config[CONF_ID])
+        cg.add(var.set_fixed_swing_select(sel))
 
     if FEATURE_HORIZONTAL_SWING in config:
         cg.add(var.set_horizontal_swing(True))
