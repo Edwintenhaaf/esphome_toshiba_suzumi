@@ -10,6 +10,10 @@ namespace toshiba_suzumi {
 constexpr const char* CUSTOM_FAN_LEVEL_2 = "Medium Low";
 constexpr const char* CUSTOM_FAN_LEVEL_4 = "Medium High";
 
+constexpr const char* CUSTOM_PWR_LEVEL_OFF = "Off";
+constexpr const char* CUSTOM_PWR_LEVEL_BOTH = "Both";
+constexpr const char* CUSTOM_PWR_LEVEL_VERTICAL = "Vertical";
+constexpr const char* CUSTOM_PWR_LEVEL_HORIZONTAL = "Horizontal"; 
 constexpr const char* CUSTOM_PWR_LEVEL_1 = "Pos 1";
 constexpr const char* CUSTOM_PWR_LEVEL_2 = "Pos 2";
 constexpr const char* CUSTOM_PWR_LEVEL_3 = "Pos 3";
@@ -45,7 +49,7 @@ enum class SWING { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66 };
 enum class FXDSWING { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
 enum class STATE { ON = 48, OFF = 49 };
 // enum class PWR_LEVEL { PCT_50 = 50, PCT_75 = 75, PCT_100 = 100 };
-enum class PWR_LEVEL { FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
+enum class PWR_LEVEL { OFF = 49, BOTH =  67, VERTICAL = 65, HORIZONTAL = 66, FIX_POS_1 = 80, FIX_POS_2 = 81, FIX_POS_3 = 82, FIX_POS_4 = 83, FIX_POS_5 = 84 };
 
 enum SPECIAL_MODE {
   STANDARD = 0,
