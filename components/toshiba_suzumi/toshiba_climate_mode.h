@@ -94,9 +94,6 @@ const ::std::string IntToCustomFanMode(FAN mode);
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode);
 const std::string IntToPowerLevel(PWR_LEVEL mode);
 
-const optional<FXDSWING> StringToFxdLevel(const std::string &mode);
-const std::string IntToFxdLevel(FXDSWING mode);
-
 const optional<SPECIAL_MODE> SpecialModeToInt(const std::string &mode);
 const std::string IntToSpecialMode(SPECIAL_MODE mode);
 
