@@ -327,9 +327,6 @@ void ToshibaClimateUart::dump_config() {
   if (pwr_select_ != nullptr) {
     LOG_SELECT("", "Power selector", this->pwr_select_);
   }
-   if (fixed_swing_select != nullptr) {
-    LOG_SWING("", "fixed_swing", this->fixed_swing_select);
-  }
   if (special_mode_select_ != nullptr) {
     LOG_SELECT("", "Special mode selector", this->special_mode_select_);
   }
