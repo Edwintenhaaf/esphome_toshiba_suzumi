@@ -63,7 +63,7 @@ const std::string IntToCustomFanMode(FAN mode) {
   }
 }
 
-const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode) {
+const optional<SWING_SET> StringToPwrLevel(const std::string &mode) {
   if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_OFF)) {
     return SWING_SET::OFF;
   } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_BOTH)) {
