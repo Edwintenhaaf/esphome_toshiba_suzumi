@@ -64,49 +64,49 @@ const std::string IntToCustomFanMode(FAN mode) {
 }
 
 const optional<PWR_LEVEL> StringToPwrLevel(const std::string &mode) {
-  if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_OFF)) {
-    return PWR_LEVEL::OFF;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_BOTH)) {
-    return PWR_LEVEL::BOTH;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_VERTICAL)) {
-    return PWR_LEVEL::VERTICAL;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_HORIZONTAL)) {
-    return PWR_LEVEL::HORIZONTAL;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_1)) {
-    return PWR_LEVEL::FIX_POS_1;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_2)) {
-    return PWR_LEVEL::FIX_POS_2;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_3)) {
-    return PWR_LEVEL::FIX_POS_3;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_4)) {
-    return PWR_LEVEL::FIX_POS_4;
-  } else if (str_equals_case_insensitive(mode, CUSTOM_PWR_LEVEL_5)) {
-    return PWR_LEVEL::FIX_POS_5;
+  if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_OFF)) {
+    return SWING_SET::OFF;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_BOTH)) {
+    return SWING_SET::BOTH;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_VERTICAL)) {
+    return SWING_SET::VERTICAL;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_HORIZONTAL)) {
+    return SWING_SET::HORIZONTAL;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_1)) {
+    return SWING_SET::FIX_POS_1;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_2)) {
+    return SWING_SET::FIX_POS_2;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_3)) {
+    return SWING_SET::FIX_POS_3;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_4)) {
+    return SWING_SET::FIX_POS_4;
+  } else if (str_equals_case_insensitive(mode, CUSTOM_SWING_SET_5)) {
+    return SWING_SET::FIX_POS_5;
   } else {
     return nullopt;
   }
 }
 
-const std::string IntToPowerLevel(PWR_LEVEL mode) {
+const std::string IntToSwingSet(SWING_SET mode) {
   switch (mode) {
-    case PWR_LEVEL::OFF:
-      return CUSTOM_PWR_LEVEL_OFF;
-    case PWR_LEVEL::BOTH:
-      return CUSTOM_PWR_LEVEL_BOTH;
-    case PWR_LEVEL::VERTICAL:
-      return CUSTOM_PWR_LEVEL_VERTICAL;
-    case PWR_LEVEL::HORIZONTAL:
-      return CUSTOM_PWR_LEVEL_HORIZONTAL;
-    case PWR_LEVEL::FIX_POS_1:
-      return CUSTOM_PWR_LEVEL_1;
-    case PWR_LEVEL::FIX_POS_2:
-      return CUSTOM_PWR_LEVEL_2;
-    case PWR_LEVEL::FIX_POS_3:
-      return CUSTOM_PWR_LEVEL_3;
-    case PWR_LEVEL::FIX_POS_4:
-      return CUSTOM_PWR_LEVEL_4;
-    case PWR_LEVEL::FIX_POS_5:
-      return CUSTOM_PWR_LEVEL_5;
+    case SWING_SET::OFF:
+      return CUSTOM_SWING_SET_OFF;
+    case SWING_SET::BOTH:
+      return CUSTOM_SWING_SET_BOTH;
+    case SWING_SET::VERTICAL:
+      return CUSTOM_SWING_SET_VERTICAL;
+    case PSWING_SET::HORIZONTAL:
+      return CUSTOM_SWING_SET_HORIZONTAL;
+    case SWING_SET::FIX_POS_1:
+      return CUSTOM_PSWING_SET_1;
+    case SWING_SET::FIX_POS_2:
+      return CUSTOM_SWING_SET_2;
+    case SWING_SET::FIX_POS_3:
+      return CUSTOM_SWING_SET_3;
+    case SWING_SET::FIX_POS_4:
+      return CUSTOM_SWING_SET_4;
+    case SWING_SET::FIX_POS_5:
+      return CUSTOM_SWING_SET_5;
     default:
       return "Unknown";
   }
