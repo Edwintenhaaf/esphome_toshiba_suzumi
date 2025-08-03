@@ -21,7 +21,7 @@ CONF_OUTDOOR_TEMP = "outdoor_temp"
 CONF_PWR_SELECT = "power_select"
 CONF_SPECIAL_MODE = "special_mode"
 CONF_SPECIAL_MODE_MODES = "modes"
-FEATURE_HORIZONTAL_SWING = "horizontal_swing"
+# FEATURE_HORIZONTAL_SWING = "horizontal_swing"
 MIN_TEMP = "min_temp"
 DISABLE_WIFI_LED = "disable_wifi_led"
 
@@ -46,7 +46,7 @@ if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
             cv.Optional(CONF_PWR_SELECT): select.select_schema(ToshibaPwrModeSelect).extend({
                 cv.GenerateID(): cv.declare_id(ToshibaPwrModeSelect),
             }),
-            cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
+            # cv.Optional(FEATURE_HORIZONTAL_SWING): cv.boolean,
             cv.Optional(DISABLE_WIFI_LED): cv.boolean,
             cv.Optional(CONF_SPECIAL_MODE): select.select_schema(ToshibaSpecialModeSelect).extend({
                 cv.GenerateID(): cv.declare_id(ToshibaSpecialModeSelect),
