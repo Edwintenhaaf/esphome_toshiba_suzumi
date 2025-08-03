@@ -83,9 +83,6 @@ enum class ToshibaCommandType : uint8_t {
 const MODE ClimateModeToInt(climate::ClimateMode mode);
 const climate::ClimateMode IntToClimateMode(MODE mode);
 
-// const SWING ClimateSwingModeToInt(climate::ClimateSwingMode mode);
-// const climate::ClimateSwingMode IntToClimateSwingMode(SWING mode);
-
 const LogString *climate_state_to_string(STATE mode);
 
 const optional<FAN> StringToFanLevel(std::string mode);

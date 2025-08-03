@@ -169,38 +169,6 @@ const std::string IntToSpecialMode(SPECIAL_MODE mode) {
   }
 }
 
-// const SWING ClimateSwingModeToInt(climate::ClimateSwingMode mode) {
-//  switch (mode) {
-//    case climate::CLIMATE_SWING_OFF:
-//      return SWING::OFF;
-//    case climate::CLIMATE_SWING_BOTH:
-//      return SWING::BOTH;
-//    case climate::CLIMATE_SWING_VERTICAL:
-//      return SWING::VERTICAL;
-//    case climate::CLIMATE_SWING_HORIZONTAL:
-//      return SWING::HORIZONTAL;
-//    default:
-//      ESP_LOGE(TAG, "Invalid swing mode %d.", mode);
-//      return SWING::OFF;
-//  }
-// }
-
-// const climate::ClimateSwingMode IntToClimateSwingMode(SWING mode) {
-//  switch (mode) {
- //   case SWING::OFF:
- //     return climate::CLIMATE_SWING_OFF;
-//    case SWING::VERTICAL:
-//      return climate::CLIMATE_SWING_VERTICAL;
-//    case SWING::HORIZONTAL:
-//      return climate::CLIMATE_SWING_HORIZONTAL;
-//    case SWING::BOTH:
-//      return climate::CLIMATE_SWING_BOTH;
-//    default:
-//      ESP_LOGE(TAG, "Invalid swing mode %d.", mode);
-//      return climate::CLIMATE_SWING_OFF;
-//  }
-//}
-
 const LogString *climate_state_to_string(STATE mode) {
   switch (mode) {
     case STATE::ON:

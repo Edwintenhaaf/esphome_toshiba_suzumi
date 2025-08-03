@@ -432,15 +432,6 @@ void ToshibaClimateUart::control(const climate::ClimateCall &call) {
       this->sendCmd(ToshibaCommandType::FAN, static_cast<uint8_t>(payload.value()));
     }
   }
-
-//  if (call.get_swing_mode().has_value()) {
-//    auto swing_mode = *call.get_swing_mode();
-//    auto function_value = ClimateSwingModeToInt(swing_mode);
-//    ESP_LOGD(TAG, "Setting swing mode to %s", climate_swing_mode_to_string(swing_mode));
-//    this->swing_mode = swing_mode;
-//    this->sendCmd(ToshibaCommandType::SWING, static_cast<uint8_t>(function_value));
-//  }
-
   this->publish_state();
 }
 
@@ -448,12 +439,6 @@ ClimateTraits ToshibaClimateUart::traits() {
   auto traits = climate::ClimateTraits();
   traits.set_supported_modes({climate::CLIMATE_MODE_OFF, climate::CLIMATE_MODE_HEAT_COOL, climate::CLIMATE_MODE_COOL,
                               climate::CLIMATE_MODE_HEAT, climate::CLIMATE_MODE_DRY, climate::CLIMATE_MODE_FAN_ONLY});
-  //if (this->horizontal_swing_) {
-  //  traits.set_supported_swing_modes({climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL,
-  //                                    climate::CLIMATE_SWING_HORIZONTAL, climate::CLIMATE_SWING_BOTH});
-  // } else {
-  //  traits.set_supported_swing_modes({climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL});
- //  }
   traits.set_supports_current_temperature(true);
 
   // Toshiba AC has more FAN levels that standard climate component, we have to use custom.
