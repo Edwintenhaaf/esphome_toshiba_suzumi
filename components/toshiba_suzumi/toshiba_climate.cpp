@@ -8,7 +8,7 @@ namespace toshiba_suzumi {
 using namespace esphome::climate;
 
 static const int RECEIVE_TIMEOUT = 200;
-static const int COMMAND_DELAY = 100;
+static const int COMMAND_DELAY = 25;
 
 /**
  * Checksum is calculated from all bytes excluding start byte.
@@ -42,7 +42,7 @@ void ToshibaClimateUart::start_handshake() {
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = HANDSHAKE[3]});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = HANDSHAKE[4]});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = HANDSHAKE[5]});
-  enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::DELAY, .delay = 2000});
+  enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::DELAY, .delay = 500});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = AFTER_HANDSHAKE[0]});
   enqueue_command_(ToshibaCommand{.cmd = ToshibaCommandType::HANDSHAKE, .payload = AFTER_HANDSHAKE[1]});
 }
