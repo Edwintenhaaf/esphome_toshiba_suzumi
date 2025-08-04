@@ -166,11 +166,6 @@ void ToshibaClimateUart::process_command_queue_() {
     this->rx_message_.clear();
   }
 
-  // Log RX message size only if it's not empty
-  if (!this->rx_message_.empty()) {
-    ESP_LOGD(TAG, "RX message size: %d", this->rx_message_.size());
-  }
-
   // when there is no RX message and there is a command to send
   if (cmdDelay > COMMAND_DELAY && !this->command_queue_.empty() && this->rx_message_.empty()) {
     auto newCommand = this->command_queue_.front();
@@ -178,10 +173,6 @@ void ToshibaClimateUart::process_command_queue_() {
       // delay command did not finished yet
       return;
     }
-    ESP_LOGD(TAG, "Processing command after %d ms delay", cmdDelay);
-    ESP_LOGD(TAG, "Processing command type: %d", static_cast<int>(newCommand.cmd));
-    ESP_LOGD(TAG, "Delay command blocking for %d ms (waited %d ms)", newCommand.delay, cmdDelay);
-
 
     this->send_to_uart(this->command_queue_.front());
     this->command_queue_.erase(this->command_queue_.begin());
@@ -265,12 +256,7 @@ void ToshibaClimateUart::parseResponse(std::vector<uint8_t> rawData) {
       }
       break;
     }
-    // case ToshibaCommandType::SWING: {
-    //  auto swingMode = IntToClimateSwingMode(static_cast<SWING>(value));
-    //  ESP_LOGI(TAG, "Received swing mode: %s", climate_swing_mode_to_string(swingMode));
-    //  this->swing_mode = swingMode;
-    //  break;
-    //}
+
     case ToshibaCommandType::MODE: {
       auto mode = IntToClimateMode(static_cast<MODE>(value));
       ESP_LOGI(TAG, "Received AC mode: %s", climate_mode_to_string(mode));

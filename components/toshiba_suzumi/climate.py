@@ -88,7 +88,7 @@ async def to_code(config):
         cg.add(var.set_outdoor_temp_sensor(sens))
 
     if CONF_PWR_SELECT in config:
-        sel = await select.new_select(config[CONF_PWR_SELECT], options=['Off', 'Both', 'Vertical', 'Horizontal', 'Pos 1', 'Pos 2', 'Pos 3', 'Pos 4', 'Pos 5'])
+        sel = await select.new_select(config[CONF_PWR_SELECT], options=['Off', 'Both', 'Vertical', 'Horizontal', 'Fixed 1', 'Fixed 2', 'Fixed 3', 'Fixed 4', 'Fixed 5'])
         await cg.register_parented(sel, config[CONF_ID])
         cg.add(var.set_pwr_select(sel))
 

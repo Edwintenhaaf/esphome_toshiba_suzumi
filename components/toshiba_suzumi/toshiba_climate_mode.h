@@ -14,11 +14,11 @@ constexpr const char* CUSTOM_PWR_LEVEL_OFF = "Off";
 constexpr const char* CUSTOM_PWR_LEVEL_BOTH = "Both";
 constexpr const char* CUSTOM_PWR_LEVEL_VERTICAL = "Vertical";
 constexpr const char* CUSTOM_PWR_LEVEL_HORIZONTAL = "Horizontal"; 
-constexpr const char* CUSTOM_PWR_LEVEL_1 = "Pos 1";
-constexpr const char* CUSTOM_PWR_LEVEL_2 = "Pos 2";
-constexpr const char* CUSTOM_PWR_LEVEL_3 = "Pos 3";
-constexpr const char* CUSTOM_PWR_LEVEL_4 = "Pos 4";
-constexpr const char* CUSTOM_PWR_LEVEL_5 = "Pos 5";
+constexpr const char* CUSTOM_PWR_LEVEL_1 = "Fixed 1";
+constexpr const char* CUSTOM_PWR_LEVEL_2 = "Fixed 2";
+constexpr const char* CUSTOM_PWR_LEVEL_3 = "Fixed 3";
+constexpr const char* CUSTOM_PWR_LEVEL_4 = "Fixed 4";
+constexpr const char* CUSTOM_PWR_LEVEL_5 = "Fixed 5";
 
 constexpr const char* SPECIAL_MODE_STANDARD = "Standard";
 constexpr const char* SPECIAL_MODE_HI_POWER = "Hi POWER";
