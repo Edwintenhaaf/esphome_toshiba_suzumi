@@ -167,6 +167,9 @@ void ToshibaClimateUart::process_command_queue_() {
   }
 
   // when there is no RX message and there is a command to send
+
+  ESP_LOGD(TAG, "RX message size: %d", this->rx_message_.size());
+
   if (cmdDelay > COMMAND_DELAY && !this->command_queue_.empty() && this->rx_message_.empty()) {
     auto newCommand = this->command_queue_.front();
     if (newCommand.cmd == ToshibaCommandType::DELAY && cmdDelay < newCommand.delay) {
