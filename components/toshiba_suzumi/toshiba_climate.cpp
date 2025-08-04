@@ -8,7 +8,7 @@ namespace toshiba_suzumi {
 using namespace esphome::climate;
 
 static const int RECEIVE_TIMEOUT = 200;
-static const int COMMAND_DELAY = 15;
+static const int COMMAND_DELAY = 25;
 
 /**
  * Checksum is calculated from all bytes excluding start byte.
