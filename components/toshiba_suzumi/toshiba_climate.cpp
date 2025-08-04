@@ -26,6 +26,11 @@ uint8_t checksum(std::vector<uint8_t> data, uint8_t length) {
  * Send the command to UART interface.
  */
 void ToshibaClimateUart::send_to_uart(ToshibaCommand command) {
+  if (command.payload.empty()) {
+    ESP_LOGW(TAG, "Attempted to send empty payload to UART. Skipping.");
+    return;
+  }
+
   this->last_command_timestamp_ = millis();
   ESP_LOGV(TAG, "Sending: [%s]", format_hex_pretty(command.payload).c_str());
   this->write_array(command.payload);
