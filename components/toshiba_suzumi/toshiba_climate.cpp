@@ -1,7 +1,6 @@
 #include "toshiba_climate.h"
 #include "toshiba_climate_mode.h"
 #include "esphome/core/log.h"
-#include "esphome/core/helpers.h"  // for delay()
 
 namespace esphome {
 namespace toshiba_suzumi {
@@ -9,7 +8,7 @@ namespace toshiba_suzumi {
 using namespace esphome::climate;
 
 static const int RECEIVE_TIMEOUT = 200;
-static const int COMMAND_DELAY = 25;
+static const int COMMAND_DELAY = 15;
 
 /**
  * Checksum is calculated from all bytes excluding start byte.
@@ -496,12 +495,9 @@ void ToshibaSpecialModeSelect::control(const std::string &value) { parent_->on_s
 void ToshibaClimateUart::scan() {
   ESP_LOGI(TAG, "Scan started.");
   for (uint8_t i = 128; i < 255; i++) {
-    ESP_LOGI(TAG, "Scanning sensor ID: %d", i);
     this->requestData(static_cast<ToshibaCommandType>(i));
-    delay(100);  // 100 ms delay between requests
   }
 }
-
 
 }  // namespace toshiba_suzumi
 }  // namespace esphome
