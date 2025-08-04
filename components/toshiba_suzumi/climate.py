@@ -21,7 +21,6 @@ CONF_OUTDOOR_TEMP = "outdoor_temp"
 CONF_PWR_SELECT = "power_select"
 CONF_SPECIAL_MODE = "special_mode"
 CONF_SPECIAL_MODE_MODES = "modes"
-CONF_CUSTOM_FAN_MODES = "custom_fan_modes"
 MIN_TEMP = "min_temp"
 DISABLE_WIFI_LED = "disable_wifi_led"
 
@@ -50,8 +49,6 @@ if version.parse(ESPHOME_VERSION) >= version.parse("2025.5.0"):
                 cv.GenerateID(): cv.declare_id(ToshibaSpecialModeSelect),
                 cv.Required(CONF_SPECIAL_MODE_MODES): cv.ensure_list(cv.one_of("Standard","Hi POWER","ECO","Fireplace 1","Fireplace 2","8 degrees","Silent#1","Silent#2","Sleep","Floor","Comfort"))
             }),
-            cv.Optional(CONF_CUSTOM_FAN_MODES): cv.ensure_list(cv.string),
-
             cv.Optional(MIN_TEMP): cv.int_,
         }
     ).extend(uart.UART_DEVICE_SCHEMA).extend(cv.polling_component_schema("120s"))    
@@ -75,7 +72,6 @@ else:
                 cv.GenerateID(): cv.declare_id(ToshibaSpecialModeSelect),
                 cv.Required(CONF_SPECIAL_MODE_MODES): cv.ensure_list(cv.one_of("Standard","Hi POWER","ECO","Fireplace 1","Fireplace 2","8 degrees","Silent#1","Silent#2","Sleep","Floor","Comfort"))
             }),
-            cv.Optional(CONF_CUSTOM_FAN_MODES): cv.ensure_list(cv.string),
             cv.Optional(MIN_TEMP): cv.int_,
         }
     ).extend(uart.UART_DEVICE_SCHEMA).extend(cv.polling_component_schema("120s"))
@@ -110,6 +106,3 @@ async def to_code(config):
         await cg.register_parented(sel, config[CONF_ID])
         cg.add(var.set_special_mode_select(sel))
     
-if CONF_CUSTOM_FAN_MODES in config:
-    for mode in config[CONF_CUSTOM_FAN_MODES]:
-        cg.add(var.traits.add_supported_custom_fan_mode(mode))
