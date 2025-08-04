@@ -173,6 +173,7 @@ void ToshibaClimateUart::process_command_queue_() {
       // delay command did not finished yet
       return;
     }
+    ESP_LOGD(TAG, "Processing command after %d ms delay", cmdDelay);
     this->send_to_uart(this->command_queue_.front());
     this->command_queue_.erase(this->command_queue_.begin());
   }
